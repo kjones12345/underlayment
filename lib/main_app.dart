@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,9 +20,9 @@ class MainApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Underlayment App'),
+          title: const Text('Underlayment App'),
         ),
-        body: Center(
+        body: const Center(
           child: Text('Underlayment Main Page'),
         ),
       ),
