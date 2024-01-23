@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "105736184529",
+    "project_id": "underlayment-b8cc0",
+    "storage_bucket": "underlayment-b8cc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105736184529:android:dfcca1db1fc3a3b5635bf0",
+        "android_client_info": {
+          "package_name": "com.example.underlayment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrWXEkXrqw62h6wfaF3ZAIVsoq6dl-KfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
