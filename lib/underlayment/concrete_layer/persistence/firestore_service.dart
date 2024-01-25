@@ -1,9 +1,19 @@
 // lib/persistence/firestore_service.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'persistence_service.dart';
+import '../../abstract_layer/capability.dart';
 
-class FirestoreService implements PersistenceService {
+class FirestoreService implements PersistenceService, Capability {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  @override
+  String get name => 'FirestoreService'; // Unique name for this capability
+
+  @override
+  void configure(Map<String, dynamic> configurations) {
+    // Here you can configure the FirestoreService based on the provided configurations
+    // For example: _db.settings = configurations['settings'];
+  }
 
   @override
   Future<void> createData(String collectionPath, Map<String, dynamic> data) {
