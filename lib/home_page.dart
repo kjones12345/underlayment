@@ -1,18 +1,18 @@
-// settings_page.dart
+// home_page.dart
 import 'package:flutter/material.dart';
 import 'android_back_button_handler.dart';
 import 'history_manager.dart';
 
-class SettingsPage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   final HistoryManager historyManager;
 
-  SettingsPage({required this.historyManager});
+  HomePage({required this.historyManager});
 
   @override
-  _SettingsPageState createState() => _SettingsPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return AndroidBackButtonHandler(
@@ -21,7 +21,7 @@ class _SettingsPageState extends State<SettingsPage> {
           : null,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Settings'),
+          title: Text('Home Page'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: widget.historyManager.canGoBack()
@@ -35,10 +35,16 @@ class _SettingsPageState extends State<SettingsPage> {
                   ? widget.historyManager.goForward
                   : null,
             ),
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                widget.historyManager.navigateTo('/settings');
+              },
+            ),
           ],
         ),
         body: Center(
-          child: Text('This is the Settings Page'),
+          child: Text('This is the Home Page'),
         ),
       ),
     );
