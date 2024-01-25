@@ -1,19 +1,26 @@
-// lib/main.dart
+// main.dart
 import 'package:flutter/material.dart';
-import 'package:underlayment/main_app.dart';
-import 'package:underlayment/underlayment/concrete_layer/persistence/database_manager.dart';
-import 'package:underlayment/underlayment/family_layer/theme_provider.dart';
-import 'package:provider/provider.dart';
+import 'history_manager.dart';
+import 'home_page.dart';
+import 'settings_page.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await DatabaseManager().init();
+void main() {
+  runApp(MyApp());
+}
 
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) =>
-          ThemeProvider(ThemeData.dark()), // Set your default theme here
-      child: const MainApp(),
-    ),
-  );
+class MyApp extends StatelessWidget {
+  final HistoryManager historyManager = HistoryManager();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      navigatorKey: historyManager.navigatorKey,
+      home: HomePage(historyManager: historyManager),
+      routes: {
+        '/settings': (context) => SettingsPage(historyManager: historyManager),
+        // Define other routes if necessary
+      },
+    );
+  }
 }
