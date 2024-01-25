@@ -2,11 +2,20 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:sembast/sembast.dart';
 import 'package:sembast_web/sembast_web.dart';
+import '../../abstract_layer/capability.dart';
 
-class DatabaseManager {
+class DatabaseManager implements Capability {
   static final DatabaseManager _instance = DatabaseManager._internal();
   Database? _db;
   StoreRef<String, Map<String, dynamic>>? _store;
+
+  @override
+  String get name => 'DatabaseManager'; // Unique name for this capability
+
+  @override
+  void configure(Map<String, dynamic> configurations) {
+    // Here you can configure the DatabaseManager based on the provided configurations
+  }
 
   factory DatabaseManager() {
     return _instance;
@@ -24,7 +33,7 @@ class DatabaseManager {
       // Keep your existing code for sembast_io here
     }
 
-    _store = stringMapStoreFactory.store('your_store_name');
+    _store = stringMapStoreFactory.store('underlayment_web_db');
   }
 
   Database get database => _db!;

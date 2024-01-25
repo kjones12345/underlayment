@@ -1,12 +1,22 @@
 // lib/persistence/local_service.dart
 import 'package:sembast/sembast.dart';
 import 'persistence_service.dart';
+import '../../abstract_layer/capability.dart';
 
-class LocalService implements PersistenceService {
+class LocalService implements PersistenceService, Capability {
   final Database _db;
   final StoreRef<String, Map<String, dynamic>> _store;
 
   LocalService(this._db, this._store);
+
+  @override
+  String get name => 'LocalService'; // Unique name for this capability
+
+  @override
+  void configure(Map<String, dynamic> configurations) {
+    // Here you can configure the LocalService based on the provided configurations
+    // For example, you might want to set a base path for the database based on configurations
+  }
 
   @override
   Future<void> createData(
